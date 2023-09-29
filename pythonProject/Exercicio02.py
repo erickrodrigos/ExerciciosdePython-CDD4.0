@@ -1,0 +1,5 @@
+Nome = input("Informe o nome do Aluno: ")
+Nota01 = float(input("Digite a 1º Nota "))
+Nota02 = float(input("Digite a 2º Nota "))
+Media = float((Nota01+Nota02)/2)
+print(Nome, Media)
