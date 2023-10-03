@@ -3,7 +3,7 @@ uma dúzia, e R$ 1,00 se forem compradas pelo menos 12. Escreva
 um programa que leia o número de maçãs compradas, calcule e
 escreva o custo total da compra"""
 
-reco = 0
+preco = 0
 custo = 0
 quantidadeMacas = 0
 
