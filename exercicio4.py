@@ -2,7 +2,6 @@
 vetores). Após, ler dois vetores A e B (de tamanho N cada um) e depois
 armazenar em um terceiro vetor Soma a soma dos elementos do vetor A
 com os do vetor B (respeitando as mesmas posições) e escrever o vetor Soma."""
-
 n = 0
 soma = 0
 n = int(input("informe o tamanho do seu vetor: "))
