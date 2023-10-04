@@ -7,7 +7,7 @@ N = int(input("quantos alunos tem na sala: "))
 for n in range(N):
     Nome = (input("adicione: "))
     Lista.append(Nome)
-print(Lista)
+''''print(Lista)
 
 
 #receber a quantidades de alunos e adicione o nome deles e mostrar sua posição na lista

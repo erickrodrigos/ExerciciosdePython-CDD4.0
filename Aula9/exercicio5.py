@@ -1,15 +1,12 @@
-"""Faça um código para ler um vetor de 30 números. Após isto, ler mais
-um número qualquer, calcular e escrever quantas vezes esse número aparece no vetor."""
-n = 30
-vetor = [0]*n
-teste = 0
-cont = 0
+"""Ler um vetor A de 10 números. logo em seguida, ler mais um número e guardar
+em uma variável X. Armazenar em um vetor M o resultado de cada elemento de A
+multiplicado pelo valor X. Logo após, imprimir o vetor M"""
+A = [0,0,0,0,0,0,0,0,0,0]
+M = [0,0,0,0,0,0,0,0,0,0]
+for i in range(10):
+    A[i] = float(input("adicione: "))
 
-for i in range(n):
-    vetor[i] = int(input("insira um numero: "))
-print("\n")
-teste = int(input("numero teste: "))
-for y in range(n):
-    if teste == vetor[y]:
-        cont = cont+1
-print(f"o numero foi repetido {cont} vezes")
+x = float(input("qual o numero multiplicador: "))
+for j in range(10):
+    M[j] = x*A[j]
+print(M)

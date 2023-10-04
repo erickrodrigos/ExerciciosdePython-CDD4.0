@@ -1,13 +1,13 @@
-"""Faça um código para ler 5 números e armazenar em um vetor. Após a leitura
-total dos 5 números, o código deve escrever esses 5 números lidos na ordem
-inversa"""
+"""altere o exercício anterior e mostre na tela, ao final, o nome de cada
+aluno e sua respectiva posição no array"""
 
-Nomes = [0,0,0,0,0]
-senhas = [0,0,0,0,0]
+N = 0
+Lista = []
+Nome = 0
+N = int(input("quantos alunos tem na sala: "))
 
-for x in range(5):
-    Nomes[x] = input("inserir nome: ")
-    senhas[x] = input("inserir SENHA: ")
-
-for y in range(5):
-    print("Nome: ",Nomes[y],"senha: ",senhas[y],"indice: ", y)
+for n in range(N):
+    Nome = (input("adicione: "))
+    Lista.append(Nome)
+for x in range(N):
+    print(Lista[x],'-',x+1)
