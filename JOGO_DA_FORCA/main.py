@@ -1,4 +1,10 @@
 
+palavra = []
+dica = ''
+palavraFinal = ''
+erros = 0
+letrasDitas = []
+tamanho = 0
 def desenhaForca(erros):
     print("  _______     ")
     print(" |/      |    ")
@@ -38,21 +44,23 @@ def desenhaForca(erros):
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |      / \   ")
+        print(" |            ")
+        print(" |   foi ENFORCADO !!!   ")
 
     print(" |            ")
-    print("_|___         ")
+    print("_|___    ")
     print()
 
-
-palavra = []
-dica = ''
-palavraFinal = ''
-novaPalavra = ''
-erros = 0
-palavraRevelada = []
-letrasDitas = []
-tentativa = 0
-tamanho = 0
+def venceu(palvra):
+    print(f"\n     Parabéns! Você acertou a palavra  ~* {palavra} *~")
+    print("              _______ ")
+    print("  PARABÉNS   |/      | ")
+    print(" ESTÁ LIVRE  |         ")
+    print("      (_)    |         ")
+    print("      \|/    |         ")
+    print("       |     |         ")
+    print("      / \   _|___      ")
+    print()
 
 def revelarPalavra(palavra, palavraFinal, letra):
     novaPalavra = ''
@@ -64,7 +72,7 @@ def revelarPalavra(palavra, palavraFinal, letra):
 
     return novaPalavra
 
-palavra = input("informe qual palavra será adivinhada: ")
+palavra = input("informe qual palavra será adivinhada: ").lower()
 tamanho = len(palavra)
 palavraFinal = '_' * tamanho
 dica = input(" Ajude seus amigos, informe uma Dica ;)  - ")
@@ -75,46 +83,48 @@ desenhaForca(0)
 print(f"a dica é: {dica}")
 print(f"a palavra com {tamanho} letras é: {palavraFinal}")
 
-while palavraRevelada != palavra:
+while palavraFinal != palavra:
     letra = input("   Digite uma letra: ").lower()
 
     if letra in letrasDitas:
-        print("Você já tentou essa letra antes.")
+        print("\n     Você já tentou essa letra antes.")
         continue
 #adicionar asa palavras ditas em uma lista para evitar repetições
     letrasDitas.append(letra)
 
     if len(letra) != 1 or not letra.isalpha(): #isalpha é uma função que identifica caracteres especiais e numericos
-        print("Por favor, digite uma única letra válida ou caracter válido.")
+        print("\n Por favor, digite uma única letra válida ou caracter válido.")
         continue
 
     if letra in palavra:
-        palavraRevelada = revelarPalavra(palavra, palavraFinal, letra)
-        palavraFinal = palavraRevelada
-        print("Palavra revelada:", palavraFinal)
+        palavraFinal = revelarPalavra(palavra, palavraFinal, letra)
+        #palavraFinal = palavraRevelada
+        print("\n      Palavra:", palavraFinal, "      ",dica)
+
+        tentativa = input(
+            "\n deseja chutar a palavra?  \n 1 - Digite S ou 1"
+            "\n 2 - Caso NÃO, digite qualquer letra\n    ").lower()
+
+        if tentativa == 's' or tentativa == '1':
+            chute = input(" qual o seu palpite ?  ")
+            if chute == palavra:
+                palavraFinal = chute
+            else:
+                erros += 1
+                print("   ERROU !!!!")
+                desenhaForca(erros)
+        else:
+            continue
+
     else:
         erros += 1
-        print(f"Letra não encontrada na palavra oculta. Ainda resta {7 - erros} tentativas")
+        print(f"\n       Letra não encontrada na palavra. Ainda resta {7 - erros} tentativas")
         desenhaForca(erros)
-
-    tentativa = input("deseja chutar a palavra?  \n 1 - Digite S\n 2 - Caso NÃO, digite qualquer letra\n    ").lower()
-
-    if tentativa == 's':
-        chute = input(" qual o seu palpite ?  ")
-        if chute == palavra:
-            palavraRevelada = chute
-        else:
-            erros += 1
-            print("   ERROU !!!!")
-            desenhaForca(erros)
-    else:
-        continue
 
     if erros >= 6:
         print(f"Você perdeu! A palavra era {palavra}:")
         desenhaForca(erros)
         break
 
-if palavraRevelada == palavra:
-    print(f"        Parabéns! Você acertou a palavra  *{palavra}*")
-
+if palavraFinal == palavra:
+    venceu(palavra)
