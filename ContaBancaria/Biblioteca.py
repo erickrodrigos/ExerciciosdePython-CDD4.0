@@ -30,9 +30,13 @@ class ContaBancaria:
             self.VerificarSaldo()
     def Emprestimo(self,ValorEmprestimo):
         print(f"  vi que deseja solicitar um Emprestimo de Valor {ValorEmprestimo}  ")
-        self.Saldo += ValorEmprestimo
-        print(f"emprestimo concebido: o seu novo Saldo em conta é {self.Saldo}")
+        if self.Limite >= ValorEmprestimo:
+            self.Saldo += ValorEmprestimo
+            print(f"emprestimo concebido: o seu novo Saldo em conta é {self.Saldo}")
+        else:
+            print(" voce não tem limite para isso. ")
 
     def SolicitarLimite(self,ValorLimite):
         print(f" vi que deseja aumentar o seu limite para {ValorLimite} LHE FOI CONCEBIDO UM NOVO LIMITE PARABÉNS !!!!!!")
-        self.Limite == ValorLimite
+        self.Limite = ValorLimite * -1
+        print(f'Adicionado limite de R${self.limite * -1}')
